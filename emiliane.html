@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contagem de Né da Emiliane</title>
+  <style>
+    :root {
+      --primary-color: #6f42c1;
+      --accent-color: #d63384;
+      --bg-color: #f0e9ff;
+      --text-color: #333;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin: 30px 20px 20px;
+      color: var(--primary-color);
+      text-shadow: 1px 1px 2px #aaa;
+    }
+
+    button {
+      padding: 15px 35px;
+      font-size: 1.3em;
+      background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+      color: white;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+      margin-bottom: 20px;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+    }
+
+    #contador {
+      font-size: 1.6em;
+      margin: 10px 0 20px;
+      font-weight: bold;
+      color: #555;
+    }
+
+    img {
+      max-width: 30%;
+      height: auto;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+    }
+
+    img:hover {
+      transform: scale(1.02);
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2em;
+      }
+      button {
+        font-size: 1.1em;
+        padding: 12px 25px;
+      }
+      #contador {
+        font-size: 1.4em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Contagem de Né's da Emiliane</h1>
+  <button onclick="contarNe()">Contar Né</button>
+  <div id="contador">Total de "né's": 0</div>
+  <img id="imagem" src="sr1.jpeg" alt="Reação" />
+
+  <script>
+    let contador = 0;
+    const imagem = document.getElementById("imagem");
+    const contadorDiv = document.getElementById("contador");
+    const imagens = [
+      "sr1.jpeg", // tudo bem
+      "sr2.jpeg",
+      "sr3.jpeg",
+      "sr4.jpeg",  // final horrível
+    ];
+
+    function contarNe() {
+      contador++;
+      contadorDiv.textContent = `Total de \"nés\": ${contador}`;
+      const index = Math.floor(contador / 5);
+      if (index < imagens.length) {
+        imagem.src = imagens[index];
+      } else {
+        imagem.src = imagens[imagens.length - 1];
+      }
+    }
+  </script>
+</body>
+</html>
